@@ -1,0 +1,6 @@
+{
+  "name": "Internship Portal",
+  "description": "A comprehensive full-stack internship portal for college students, employers, and administrators featuring AI-powered resume review, smart job matching, interview prep, and application tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
