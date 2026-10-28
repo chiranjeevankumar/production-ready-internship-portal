@@ -1,101 +1,140 @@
-# Internship Portal - Capstone Edition
+Internship Portal - Capstone Edition
+
+Live Application: "Open the Internship Portal" (https://career-opportunity-hub.ai.studio)
 
 A comprehensive, production-grade full-stack internship portal designed for college capstone demonstrations. Features multi-role access (Student, Employer, Admin), advanced search and filtering across core technical domains, AI-powered resume matching, automated cover letter generation, AI mock interview coaching, application tracking, and secure administrative CRUD management.
 
 ---
 
-## Features
+Features
 
-- **Internship Board**: Explore verified internships across 5 core technical domains (Software Development, Artificial Intelligence and Machine Learning, Data Analytics, Web Development, Cybersecurity).
-- **Advanced Search & Filters**: Search by title, company, or skills; filter by domain, location, work mode (Remote, Hybrid, On-site), and sort by newest or deadline.
-- **Bookmarks**: Save internships with persistence across refreshes using `localStorage`.
-- **AI-Powered Career Tools (Gemini API)**:
-  - **Resume Match Analyzer**: Evaluates candidate resumes against role requirements to compute match scores and actionable improvement suggestions.
-  - **Cover Letter Generator**: Generates professional cover letters tailored to specific internship roles.
-  - **AI Mock Interview Coach**: Generates technical and behavioral interview prep questions and evaluation rubrics.
-- **Application Management**: Submit applications with robust client and server validation, email checking, duplicate prevention, and status tracking.
-- **Admin & Employer Dashboard**: Full CRUD management of internship listings (Create, Edit, Delete with confirmation), review applicant lists, update application statuses, and filter by status.
-
----
-
-## Technology Stack
-
-- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Lucide React.
-- **Backend**: Node.js, Express, TypeScript (`tsx`).
-- **AI Integration**: `@google/genai` (Gemini 3.8 Flash SDK).
-- **Storage**: In-memory database with persistent store pattern and Supabase/PostgreSQL schema readiness.
+- Internship Board: Explore internships across five technical domains: Software Development, Artificial Intelligence and Machine Learning, Data Analytics, Web Development, and Cybersecurity.
+- Advanced Search and Filters: Search by title, company, or skills; filter by domain, location, and work mode (Remote, Hybrid, On-site); sort by newest or deadline.
+- Bookmarks: Save internships with persistence across refreshes using "localStorage".
+- AI-Powered Career Tools (Gemini API):
+  - Resume Match Analyzer: Evaluates resumes against role requirements and provides match scores and improvement suggestions.
+  - Cover Letter Generator: Generates cover letters tailored to internship roles.
+  - AI Mock Interview Coach: Generates technical and behavioral interview questions and evaluation rubrics.
+- Application Management: Submit applications with client-side and server-side validation, duplicate prevention, and application status tracking.
+- Admin and Employer Dashboard: Manage internship listings, review applications, update application statuses, and filter applications by status.
 
 ---
 
-## Project Structure
+Application Screenshots
 
-```
-├── DATABASE_SETUP.md          # Database DDL, RLS policies, and seed instructions
-├── CAPSTONE_EVIDENCE.md       # Evidence of executed tests and verification results
-├── SECURITY_CHECKLIST.md      # Security review and compliance checklist
-├── server.ts                  # Full-stack Express server with Gemini AI and API routes
-├── package.json               # Dependencies and scripts
-├── src/
-│   ├── App.tsx                # Main container component
-│   ├── main.tsx               # Entry point
-│   ├── index.css              # Tailwind CSS imports
-│   ├── types.ts               # TypeScript interfaces
-│   └── components/
-│       ├── Navbar.tsx         # Top bar contract & role switcher
-│       ├── Hero.tsx           # Landing banner, search, and domain filters
-│       ├── InternshipCard.tsx # Listing card with unboxed metadata
-│       ├── InternshipDetailModal.tsx # Full details & application form
-│       ├── AiPrepModal.tsx    # AI mock interview simulator
-│       ├── ApplicationTracker.tsx # Kanban/table applicant status tracker
-│       ├── StudentProfile.tsx # Resume and skills manager
-│       ├── EmployerDashboard.tsx # Admin / Employer CRUD & application review
-│       └── AdminDashboard.tsx # Platform analytics & system metrics
-```
+Add screenshots of your running application to a folder named "screenshots" in this repository. Then update the image filenames below to match your uploaded files.
+
+<!-- Uncomment the image references below after uploading the screenshots. --><!--
+### Internship Portal Homepage
+![Internship Portal Homepage](screenshots/homepage.png)
+
+### Internship Listings
+![Internship Listings](screenshots/internships.png)
+
+### Application Form
+![Application Form](screenshots/application-form.png)
+-->---
+
+Technology Stack
+
+- Frontend: React 19, TypeScript, Vite, Tailwind CSS, Lucide React.
+- Backend: Node.js, Express, TypeScript ("tsx").
+- AI Integration: Google GenAI SDK.
+- Storage: Application storage implementation with Supabase/PostgreSQL schema documentation.
 
 ---
 
-## Setup Instructions
+Project Structure
 
-1. Install dependencies:
-   ```bash
+├── DATABASE_SETUP.md
+├── CAPSTONE_EVIDENCE.md
+├── SECURITY_CHECKLIST.md
+├── server.ts
+├── package.json
+└── src/
+    ├── App.tsx
+    ├── main.tsx
+    ├── index.css
+    ├── types.ts
+    └── components/
+        ├── Navbar.tsx
+        ├── Hero.tsx
+        ├── InternshipCard.tsx
+        ├── InternshipDetailModal.tsx
+        ├── AiPrepModal.tsx
+        ├── ApplicationTracker.tsx
+        ├── StudentProfile.tsx
+        ├── EmployerDashboard.tsx
+        └── AdminDashboard.tsx
+
+---
+
+Setup Instructions
+
+1. Clone the repository.
+
+2. Install dependencies:
+   
    npm install
-   ```
-2. Configure environment variables in `.env.example`:
-   ```bash
+
+3. Copy the example environment file:
+   
    cp .env.example .env
-   ```
-   Provide your `GEMINI_API_KEY`.
 
-3. Run the development server:
-   ```bash
+4. Add your Gemini API key to ".env" if required:
+   
+   GEMINI_API_KEY=your_api_key_here
+
+5. Start the development server:
+   
    npm run dev
-   ```
+
+Use placeholder values in ".env.example". Never commit actual API keys, passwords, or other secrets.
 
 ---
 
-## Database Configuration
+Database Configuration
 
-See [`DATABASE_SETUP.md`](DATABASE_SETUP.md) for complete PostgreSQL / Supabase SQL DDL schemas, Row Level Security (RLS) policies, and repeatable seed migrations.
+See ""DATABASE_SETUP.md"" (DATABASE_SETUP.md) for PostgreSQL/Supabase schema definitions, Row Level Security policies, and database setup instructions.
 
----
-
-## API Documentation
-
-- `GET /api/health` - Service status and database connectivity.
-- `GET /api/internships` - Retrieve internship records with search & filters.
-- `GET /api/internships/:id` - Retrieve one internship record.
-- `POST /api/internships` - Create internship (requires admin authorization).
-- `PUT /api/internships/:id` - Update internship (requires admin authorization).
-- `DELETE /api/internships/:id` - Delete internship (requires admin authorization).
-- `GET /api/applications` - Retrieve student applications.
-- `GET /api/admin/applications` - Retrieve all applications (requires admin authorization).
-- `POST /api/applications` - Validate and store student application.
-- `PATCH /api/applications/:id` - Update application status.
+Note: Confirm that the deployed application uses the configured database before describing its production persistence guarantees.
 
 ---
 
-## Security Notes
+API Documentation
 
-- **Admin Authorization**: Administrative endpoints require valid `x-admin-token` headers.
-- **Privacy Protection**: Private applicant personal information is isolated from public endpoints.
-- **Input Validation**: Server-side validation on all incoming payload bodies.
+- "GET /api/health" — Check service health.
+- "GET /api/internships" — Retrieve internships with search and filtering.
+- "GET /api/internships/:id" — Retrieve a specific internship.
+- "POST /api/internships" — Create an internship (admin authorization required).
+- "PUT /api/internships/:id" — Update an internship (admin authorization required).
+- "DELETE /api/internships/:id" — Delete an internship (admin authorization required).
+- "GET /api/applications" — Retrieve applications, subject to authorization rules.
+- "GET /api/admin/applications" — Retrieve all applications (admin authorization required).
+- "POST /api/applications" — Submit an application.
+- "PATCH /api/applications/:id" — Update an application's status (authorization required).
+
+---
+
+Security Notes
+
+- Admin Authorization: Administrative endpoints should require valid authorization credentials.
+- Privacy Protection: Applicant personal information should not be exposed through public endpoints.
+- Input Validation: Incoming request data should be validated on the server.
+- Secrets Management: API keys and passwords must be stored in environment variables and excluded from version control.
+
+---
+
+Testing and Capstone Evidence
+
+See ""CAPSTONE_EVIDENCE.md"" (CAPSTONE_EVIDENCE.md) for the project's recorded build results and test evidence.
+
+See ""SECURITY_CHECKLIST.md"" (SECURITY_CHECKLIST.md) for the security review checklist.
+
+---
+
+Project Repository
+
+GitHub: https://github.com/chiranjeevankumar/production-ready-internship-portal
+
+Live Application: https://career-opportunity-hub.ai.studio
